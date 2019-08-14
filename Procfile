@@ -1,1 +1,1 @@
-web: gunicorn hoodapp.wsgi --log-file -
+web: gunicorn neighborapp.wsgi --log-file -
