@@ -7,32 +7,25 @@
 
 <div class="container">
   <div class="row">
-      <div class="col-md-3">
-
-
-      </div>
-    <div class="col-md-8" style="text-align: center; ">
-        {% for hood in hoods %}
+    {% for hood in hoods %}
+    <div class="col-md-6">
+      
 
       <br><br>
 
-      <div class="card img-fluid" style="margin-right: 8px">
-        <img src="{{hood.pic.url}}" class="card img-fluid" alt="image" style="width:1500px;height:500px">
+      <div class="card img-fluid">
+        <img src="{{hood.pic.url}}" class="card img-fluid" alt="image" style="width:500px;height:500px">
 
       </div>
       <h5 class="card-title">{{hood.neighbourhood}}</h5>
       <p><strong>{{hood.name}}</strong></p>
       <p><strong>{{hood.location}}</strong> </p>
-      
-      <p class="card-text" style="font-size:14px;"><small class="text-muted">
-      </p>
-      {% endfor %}
+ 
 
     </div>
-    <div class="col-md-3">
-    </div>
 
-
+   
+    {% endfor %}
 
   </div>
 

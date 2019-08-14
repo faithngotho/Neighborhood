@@ -38,7 +38,7 @@ def add_hood(request):
         hoodform = HoodForm(request.POST, request.FILES)
         if hoodform.is_valid():
             upload = hoodform.save()
-            return redirect('home_page')
+            return redirect('home')
     else:
         hoodform = HoodForm()
     return render(request,'add-hood.html',{"hoodform":hoodform})

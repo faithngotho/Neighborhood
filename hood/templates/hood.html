@@ -2,12 +2,12 @@
 {% load bootstrap3 %}
 {% block content %}
 {{ block.super }}
-<div class="container-fluid" id="single-hoody">
+<div class="container-fluid"> id="single-hoody">
     <h6 style="text-align: center">{{neighbourhood.name}}</h6>
     <br>
     <h6 style="text-align: center">{{neighbourhood.occupants.count}}</h6>
     <br>
-    
+
     <a href="{% url 'leave' neighbourhood_id=single_hood.id %}" class="btn btn-outline-danger">Leave neighbourhood</a>
     <a href="{% url 'upload_business' %}" class="btn btn-outline-primary">Include Business</a>
 
@@ -16,7 +16,8 @@
     <div class="row">
         {% for biz in single_hood.business.all %}
         <div class="card" style="width:300px;" id="biz">
-            <img class="card-img-top img-responsive" src="{{biz.image.url}}" alt="Card image" style="height:400px; width:300px;">
+            <img class="card-img-top img-responsive" src="{{biz.image.url}}" alt="Card image"
+                style="height:400px; width:300px;">
             <div class="card-body">
                 <h4 class="card-title">{{biz.name}}</h4>
             </div>
@@ -24,8 +25,8 @@
         {% endfor %}
     </div>
 
-    
-      
-        {% endblock %}
-    </div>
+
+
+    {% endblock %}
+</div>
 </div>
