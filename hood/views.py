@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .forms import ProfileForm,PostForm,HoodForm,BusinessForm
+from .forms import ProfileForm,PostForm,HoodForm,BusinessForm,UserRegistrationForm
 from .models import Profile,Neighbourhood,Post,HoodDetails
 # Create your views here.
 
@@ -28,7 +28,6 @@ def profile(request):
         postform = PostForm()
     return render(request, 'profile.html',{"form":form,"posts":posts,"postform":postform,"details":details})
 
-#@login_required(login_url='/accounts/login/')
 def home(request):
     hoods=Neighbourhood.objects.all()
     return render(request, 'live.html',{"hoods":hoods})
@@ -60,6 +59,16 @@ def leave(request,neighbourhood_id):
     current_user.profile.neighbourhood = None
     current_user.profile.save()
     return redirect('home_page')
+
+def register(request):
+    if request.method == "POST":
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/accounts/login')
+    else:
+        form =UserRegistrationForm()
+    return render(request,'registration/registration_form.html',{'form':form}) 
 
 @login_required(login_url='/accounts/login/')
 def hood(request,neighbourhood_id):
