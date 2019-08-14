@@ -7,7 +7,6 @@ urlpatterns=[
    url('^$',views.home,name ='home'),
    url(r'^hood/$', views.add_hood, name='add_hood'),
    url(r'register',views.register,name= 'signup'),
-   url(r'^leave/(?P<neighbourhood_id>\d+)',views.leave, name='leave'),
    url(r'^one_hood(?P<neighbourhood_id>\d+)',views.hood, name='hood'),
    url(r'^upload/$', views.upload_business, name='upload_business'),
  
