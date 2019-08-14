@@ -45,13 +45,6 @@ def add_hood(request):
     
 
 
-@login_required(login_url='/accounts/login')
-def join(request,neighbourhood_id):
-    hood = Neighbourhood.objects.get(id=neighbourhood_id)
-    current_user = request.user
-    current_user.profile.neighbourhood = hood
-    current_user.profile.save()
-    return redirect('hood',neighbourhood_id)
 
 @login_required(login_url='/accounts/login')
 def leave(request,neighbourhood_id):
