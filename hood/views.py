@@ -28,8 +28,8 @@ def profile(request):
         postform = PostForm()
     return render(request, 'profile.html',{"form":form,"posts":posts,"postform":postform,"details":details})
 
-@login_required(login_url='/accounts/login/')
-def timeline(request):
+#@login_required(login_url='/accounts/login/')
+def home(request):
     hoods=Neighbourhood.objects.all()
     return render(request, 'live.html',{"hoods":hoods})
   
