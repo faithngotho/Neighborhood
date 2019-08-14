@@ -44,15 +44,6 @@ def add_hood(request):
     return render(request,'add-hood.html',{"hoodform":hoodform})
     
 
-
-
-@login_required(login_url='/accounts/login')
-def leave(request,neighbourhood_id):
-    current_user = request.user
-    current_user.profile.neighbourhood = None
-    current_user.profile.save()
-    return redirect('home_page')
-
 def register(request):
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
