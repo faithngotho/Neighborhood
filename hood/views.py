@@ -74,15 +74,14 @@ def hood(request,neighbourhood_id):
 
 @login_required(login_url='/accounts/login')
 def upload_business(request):
-    hood = Neighbourhood.objects.get(id=request.user.profile.neighbourhood.id)
     if request.method == 'POST':
         businessform = BusinessForm(request.POST, request.FILES)
         if businessform.is_valid():
             upload = businessform.save(commit=False)
-            upload.user=request.user
-            upload.neighbourhood=request.user.profile.neighbourhood
             upload.save()
-        return redirect('hood',request.user.profile.neighbourhood.id)
+        return redirect('home')
     else:
         businessform = BusinessForm()
-    return render(request,'business.html',locals())
+    return render(request,'upload_business.html',{"businessform":businessform})
+
+    
